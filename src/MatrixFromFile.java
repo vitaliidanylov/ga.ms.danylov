@@ -1,6 +1,5 @@
-package tests;
-
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -11,11 +10,7 @@ import java.util.Scanner;
  * @return double[]
  */
 public class MatrixFromFile {
-    public static void main(String[] args) {
-        double[][] mat = readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga.ms.danylov\\src\\tests\\weight_matrix10.txt");
-        printMatrix(mat);
-    }
-
+    //read matrix
     public static double[][] readMatrixFromFile(String filename){
         //estimate how many lines in the file
         int ctr = 0;
@@ -45,13 +40,7 @@ public class MatrixFromFile {
         return null;
     }
     //matrix printing
-
     public static void printMatrix(double[][] matrix){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println("");
-        }
+        System.out.println(Arrays.deepToString(matrix));
     }
 }

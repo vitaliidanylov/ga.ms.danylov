@@ -1,30 +1,31 @@
+import java.util.Arrays;
+
 /**
  * Created by vit on 5/7/2016.
  */
 public class GaMainClass {
+    //matrix
+    public static double[][] matrix = MatrixFromFile.readMatrixFromFile("K:\\GoogleDrive\\GitHub_project\\ga.ms.danylov\\src\\weight_matrix10.txt");
 
+    public static void main(String[] args) {
 
-    //function check is the path exist
-//    public static boolean isCon(double[][] arr, Chromosome ch){
-//        boolean res = false;
-//        int point = 0;
-//
-//        for (int i = 1; i < arr.length; i++) {
-//            if((ch.getGene(i)==1)&&(arr[point][i]>0)&&!Double.isInfinite(arr[point][i])){
-//                point = i;
-//                continue;
-//            }
-//            if((ch.getGene(i) == 1) && Double.isInfinite(arr[point][i])){
-//                res = false;
-//                break;
-//            }
-//            res = true;
-//        }
-//
-//        return res;
-//    }
+        Population pop = new Population(10,10);
+        Population newPop;
 
+        for (int i = 0; i < pop.size(); i++) {
+            System.out.println(pop.chromosomes[i].toString());
+        }
 
+        System.out.println("");
+        System.out.println("New population");
+
+        newPop = additionFunctions.selectionPop(pop);
+        for (int i = 0; i < pop.size(); i++) {
+            System.out.println(newPop.chromosomes[i].toString());
+        }
+//        double a = calcFitness.getAllFitness(pop);
+//        System.out.println(a);
+    }
 }
 
 

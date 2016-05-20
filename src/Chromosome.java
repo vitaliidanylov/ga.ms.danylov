@@ -3,8 +3,18 @@
  */
 public class Chromosome {
 
-    static int defChLength = 10;
-    private int[] genes = new int[defChLength];
+    public int defChLength = 10;
+    public int[] genes = new int[defChLength];
+
+    public Chromosome() {
+        generateChromosome();
+    }
+
+    public Chromosome(int defChLength) {
+        this.defChLength = defChLength;
+        genes = new int[defChLength];
+        generateChromosome();
+    }
 
     //generate random chromosome
     public void generateChromosome(){
@@ -18,7 +28,7 @@ public class Chromosome {
 
     /*getters and setters*/
     // if we want to change chromosome length
-    public static void setDefaultChromoLength(int length){
+    public void setDefaultChromoLength(int length){
         defChLength = length;
     }
 
@@ -34,7 +44,6 @@ public class Chromosome {
     public int size(){
         return genes.length;
     }
-
     @Override
     public String toString() {
         String geneString = "";
