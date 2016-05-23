@@ -40,6 +40,10 @@ public class Chromosome {
         genes[index] = value;
     }
 
+    public void flipGene(int index){
+        genes[index] = ~genes[index];
+    }
+
     public int[] getGenes(){
         return genes;
     }

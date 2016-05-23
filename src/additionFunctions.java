@@ -76,7 +76,7 @@ public class additionFunctions {
         while(newCtr != oldPop.size()){
             //crossover point
             cutPoint = 2 + (int)(Math.random() * ((point - 3) + 1));
-            System.out.println("Cut point: "+cutPoint);
+            System.out.println("Cut point: " + cutPoint);
 
             //choose two chromosome randomly from old population
             p1 = Population.getRandChromo(oldPop);
@@ -107,9 +107,36 @@ public class additionFunctions {
             System.out.println(p1.toString());
             System.out.println(p2.toString());
         }
-
-
         return newPop;
     }
 
+    //mutation function
+    public static Population mutatePop(Population oldPop){
+        //counter
+        int ctr = 0;
+        //mutation rate
+        int a = (int) (0.07*oldPop.size());
+        //random number
+        int     randChromo,
+                randGene;
+        //tmp chromosome
+        Chromosome tmpChromo;
+
+        while(a != ctr){
+            randChromo = (int) (Math.random()*oldPop.size());
+            tmpChromo = oldPop.chromosomes[randChromo];
+            randGene = 2 + (int)(Math.random() * ((oldPop.chromosomes[0].size() - 3) + 1));
+            if(tmpChromo.getGene(randGene) == 1){
+                tmpChromo.setGene(randGene, (byte) 0);
+            } else {
+                tmpChromo.setGene(randGene, (byte) 1);
+            }
+            if (additionFunctions.isCon(GaMainClass.matrix,tmpChromo)){
+                oldPop.chromosomes[randChromo] = tmpChromo;
+                ctr++;
+            }
+        }
+
+        return oldPop;
+    }
 }

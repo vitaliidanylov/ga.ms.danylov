@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Created by vit on 5/7/2016.
  */
@@ -11,8 +9,7 @@ public class GaMainClass {
 
         Population pop = new Population(10,10);
 //        calcFitness.getAllFitness(pop);
-
-        additionFunctions.crossoverPop(pop);
+        additionFunctions.mutatePop(pop);
 
     }
 }
