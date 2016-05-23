@@ -38,7 +38,7 @@ public class additionFunctions {
         Population newPop = new Population(oldPop.size());
         //count each fitness of population
         for (int i = 0; i < oldPop.size(); i++) {
-            arrOfFit[i] = calcFitness.getFitness(GaMainClass.matrix, oldPop.chromosomes[i])/sumOfFit;
+            arrOfFit[i] = sumOfFit/calcFitness.getFitness(GaMainClass.matrix, oldPop.chromosomes[i])*100;
         }
 
         double rand;
@@ -60,10 +60,54 @@ public class additionFunctions {
 
     //crossover function
     public static Population crossoverPop(Population oldPop){
+        //counters
+        int     newCtr = 0,
+                cutPoint,
+                point = oldPop.chromosomes[0].size();
+        //parents
+        Chromosome p1,
+                   p2;
         //crate new population
         Population newPop = new Population(oldPop.size());
-        //cut point
-        int cutPoint = 2 + (int)(Math.random() * ((oldPop.chromosomes[0].size() - 3) + 1));
+
+        //temporary array
+        int[] tmpArray;
+
+        while(newCtr != oldPop.size()){
+            //crossover point
+            cutPoint = 2 + (int)(Math.random() * ((point - 3) + 1));
+            System.out.println("Cut point: "+cutPoint);
+
+            //choose two chromosome randomly from old population
+            p1 = Population.getRandChromo(oldPop);
+            p2 = Population.getRandChromo(oldPop);
+
+            //output Old
+            System.out.println("Old output: ");
+            System.out.println(p1.toString());
+            System.out.println(p2.toString());
+
+            //initialize tmp array
+            tmpArray = new int[(oldPop.size()-1)-cutPoint];
+            //change genes between two parents
+            System.arraycopy(p1.getGenes(),cutPoint,tmpArray,0,(oldPop.size()-1)-cutPoint);
+            System.arraycopy(p2.getGenes(),cutPoint,p1.getGenes(),cutPoint,(oldPop.size()-1)-cutPoint);
+            System.arraycopy(tmpArray,0,p2.getGenes(),cutPoint,(oldPop.size()-1)-cutPoint);
+
+            if (additionFunctions.isCon(GaMainClass.matrix,p1)){
+                newPop.chromosomes[newCtr] = p1;
+                newCtr++;
+            } else if (additionFunctions.isCon(GaMainClass.matrix,p2)){
+                newPop.chromosomes[newCtr] = p2;
+                newCtr++;
+            }
+
+            //output New
+            System.out.println("New output: ");
+            System.out.println(p1.toString());
+            System.out.println(p2.toString());
+        }
+
 
         return newPop;
     }

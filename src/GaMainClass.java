@@ -10,21 +10,10 @@ public class GaMainClass {
     public static void main(String[] args) {
 
         Population pop = new Population(10,10);
-        Population newPop;
+//        calcFitness.getAllFitness(pop);
 
-        for (int i = 0; i < pop.size(); i++) {
-            System.out.println(pop.chromosomes[i].toString());
-        }
+        additionFunctions.crossoverPop(pop);
 
-        System.out.println("");
-        System.out.println("New population");
-
-        newPop = additionFunctions.selectionPop(pop);
-        for (int i = 0; i < pop.size(); i++) {
-            System.out.println(newPop.chromosomes[i].toString());
-        }
-//        double a = calcFitness.getAllFitness(pop);
-//        System.out.println(a);
     }
 }
 

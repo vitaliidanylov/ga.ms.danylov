@@ -39,6 +39,17 @@ public class Population {
         chromosomes[index] = chr;
     }
 
+    //get random chromosome
+    public static Chromosome getRandChromo(Population pop){
+        Chromosome newChromosome;
+        //choose random number in a range of population size
+        int rand = (int) (Math.random()*pop.size());
+
+        newChromosome = pop.chromosomes[rand];
+
+        return newChromosome;
+    }
+
     //print population
     public void printPopulation(){
         for (int i = 0; i < chromosomes.length; i++) {

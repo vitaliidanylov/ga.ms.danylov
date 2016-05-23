@@ -3,7 +3,7 @@
  */
 public class Chromosome {
 
-    public int defChLength = 10;
+    private int defChLength = 10;
     public int[] genes = new int[defChLength];
 
     public Chromosome() {
@@ -38,6 +38,10 @@ public class Chromosome {
 
     public void setGene(int index, byte value){
         genes[index] = value;
+    }
+
+    public int[] getGenes(){
+        return genes;
     }
 
     /*public methods*/
